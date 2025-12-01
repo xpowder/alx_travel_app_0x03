@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     "listings",
 ]
 
@@ -97,11 +98,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "youremail@gmail.com")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "yourpassword")
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER", "youremail@gmail.com")
 
 # CELERY BEAT (optional if you need task scheduling)
 CELERY_BEAT_SCHEDULE = {
     "weekly-crm-report": {
-        "task": "listings.tasks.send_booking_confirmation",
+        "task": "listings.tasks.send_booking_confirmation_email",
         "schedule": crontab(minute=0, hour=6, day_of_week="mon"),
     },
 }

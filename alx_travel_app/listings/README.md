@@ -1,8 +1,8 @@
-# alx_travel_app_0x03 - Celery with RabbitMQ
+# Listings App
 
-## Setup
+This app contains the booking functionality with Celery background tasks for email notifications.
 
-1. Install RabbitMQ:
-   ```bash
-   sudo apt-get install rabbitmq-server
-   sudo service rabbitmq-server start
+## Files
+
+- `tasks.py` - Contains the `send_booking_confirmation_email` shared task
+- `views.py` - Contains the `BookingViewSet` that triggers email tasks on booking creation
